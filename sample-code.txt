@@ -1,5 +1,9 @@
-Code for defining factorial
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
+EXAMPLE CODE of defining factorial and exponential functions. 
+NOTE the factorial must be defined before the exponential.
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 
 def FACT(factk){
@@ -13,6 +17,12 @@ def FACT(factk){
 }
 
 print{FACT{5:}} 
+
+END
+
+
+START
+print{FACT{6:}}
 END
 
 
@@ -30,8 +40,21 @@ def EXP(expx){
 print{EXP{1,1,0}}
 END
 
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+CODE EXAMPLES of calculating derivatives and finding extrema.
 
-WOLFRAM ALPHA CODE exp(sin(x^3 + x^2 - 1))'' at x = 4
+Wolfram alpha code that confrims the results. 
+For the more complicated expressions wolfram alpha fails 
+since it is trying to do thins symbolically. 
+
+you can change the word max to roots to find roots instead.
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''
+WOLFRAM ALPHA CODE 
+exp(sin(x^3 + x^2 - 1))'' at x = 4
+''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 START
 [x = 4,1,0]
 print{exp{sin{x^3: + x^2: - 1:}}}
@@ -42,6 +65,11 @@ START
 max x {exp{sin{x^3: + x^2: - 1:}}}
 END
 
+''''''''''''''''''''''''''''''''''''''''''''''''''
+WOLFRAM ALPHA CODE 
+extrema exp(sin(x^3 + x^2 - 1))
+''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 START
 [x = 1,1,0]
 max x high 20: low -20: points 50: {exp{sin{x^3: + x^2: - 1:}}}
@@ -49,8 +77,10 @@ END
 
 
 
-
-WOLFRAM ALPHA CODE atan(exp(sin(x^3 + x^2 - 1)))'' at x = 4
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+WOLFRAM ALPHA CODE atan(exp(sin(x^3 + x^2 - 1)))'' 
+at x = 4
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 4,1,0]
 print{atan{exp{sin{x^3: + x^2: - 1:}}}}
@@ -60,25 +90,33 @@ START
 [x = 1,1,0]
 max x {atan{exp{sin{x^3: + x^2: - 1:}}}}
 END
-
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+WOLFRAM ALPHA CODE 
+extrema atan(exp(sin(x^3 + x^2 - 1))) at x = 4
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 1,1,0]
 max x high 20: low -20: points 50: {atan{exp{sin{x^3: + x^2: - 1:}}}}
 END
-
-WOLFRAM ALPHA CODE atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))'' at x = 4
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+WOLFRAM ALPHA CODE 
+atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))'' at x = 4
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 4,1,0]
 print{atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
 END
-
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+WOLFRAM ALPHA CODE 
+extrema atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 1,1,0]
 max x high 10: low -10: points 40: {atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
 END
-
-example of nested loops with if statement
-
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+EXAMPLE of nested loops with if statement
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 1:]
 while(x<=20:){
@@ -94,11 +132,14 @@ while(x<=20:){
 }
 END
 
-
-example of maximizing user defined function
-
-WOLFRAM ALPHA CODE 
-
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+CODE EXAMPLE of finding extrema of user defined functions 
+    In this case the function is sum(k=1:35) of sin(k*x^2 + k)
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+WOLFRAM code. 
+plot sum( from k = 1 to 35) of sin(k*x^2 + k) from -1 to 1
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 START
 def SUMSIN(sumsinx){

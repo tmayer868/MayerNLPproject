@@ -45,7 +45,7 @@ CODE EXAMPLES of calculating derivatives and finding extrema.
 
 Wolfram alpha code that confrims the results. 
 For the more complicated expressions wolfram alpha fails 
-since it is trying to do thins symbolically. 
+since it is trying to do things symbolically. 
 
 you can change the word max to roots to find roots instead.
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -78,8 +78,8 @@ END
 
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-WOLFRAM ALPHA CODE atan(exp(sin(x^3 + x^2 - 1)))'' 
-at x = 4
+WOLFRAM ALPHA CODE 
+atan(exp(sin(x^3 + x^2 - 1)))'' at x = 4
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 4,1,0]
@@ -94,10 +94,12 @@ END
 WOLFRAM ALPHA CODE 
 extrema atan(exp(sin(x^3 + x^2 - 1))) at x = 4
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 START
 [x = 1,1,0]
 max x high 20: low -20: points 50: {atan{exp{sin{x^3: + x^2: - 1:}}}}
 END
+
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 WOLFRAM ALPHA CODE 
 atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))'' at x = 4
@@ -113,7 +115,7 @@ extrema atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))
 START
 [x = 1,1,0]
 max x high 10: low -10: points 40: {atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
-END
+
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 EXAMPLE of nested loops with if statement
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''

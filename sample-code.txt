@@ -1,0 +1,95 @@
+Code for defining factorial
+
+START
+
+def FACT(factk){
+    [factx = 1:]
+    [factans = 1:]
+    while(factx <= factk ){
+        [factans = factans*factx]
+        [factx = factx + 1:]
+    }
+    [factk = factans]
+}
+
+print{FACT{5:}} 
+END
+
+
+START
+def EXP(expx){
+    [expans = 1:][expi = 1:]
+    while(expi<=100:){
+        [expans = expans + (expx^expi)/FACT{expi}]
+        [expi = expi + 1:]
+
+    }
+    [expx = expans]
+}
+
+print{EXP{1,1,0}}
+END
+
+
+WOLFRAM ALPHA CODE exp(sin(x^3 + x^2 - 1))'' at x = 4
+START
+[x = 4,1,0]
+print{exp{sin{x^3: + x^2: - 1:}}}
+END
+
+START
+[x = 1,1,0]
+max x {exp{sin{x^3: + x^2: - 1:}}}
+END
+
+START
+[x = 1,1,0]
+max x high 20: low -20: points 50: {exp{sin{x^3: + x^2: - 1:}}}
+END
+
+
+
+
+WOLFRAM ALPHA CODE atan(exp(sin(x^3 + x^2 - 1)))'' at x = 4
+START
+[x = 4,1,0]
+print{atan{exp{sin{x^3: + x^2: - 1:}}}}
+END
+
+START
+[x = 1,1,0]
+max x {atan{exp{sin{x^3: + x^2: - 1:}}}}
+END
+
+START
+[x = 1,1,0]
+max x high 20: low -20: points 50: {atan{exp{sin{x^3: + x^2: - 1:}}}}
+END
+
+WOLFRAM ALPHA CODE atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))'' at x = 4
+START
+[x = 4,1,0]
+print{atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
+END
+
+START
+[x = 1,1,0]
+max x high 10: low -10: points 40: {atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
+END
+
+example of nested loops with if statement
+
+START
+[x = 1:]
+while(x<=20:){
+    if(x>10:){
+        [i = 1:]
+        print{x}
+        while(i<x){
+            print{i*i}
+            [i = i + 1:]
+        }
+    }
+    [x = x + 1:]
+}
+END

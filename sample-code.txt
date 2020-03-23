@@ -93,3 +93,27 @@ while(x<=20:){
     [x = x + 1:]
 }
 END
+
+
+example of maximizing user defined function
+
+WOLFRAM ALPHA CODE 
+
+
+START
+def SUMSIN(sumsinx){
+    [sumsink = 1:]
+    [sumsinans = 0:]
+    while(sumsink<=35:){
+        [sumsinans = sumsinans + sin{sumsink*(sumsinx^2:) + sumsink}]
+        [sumsink = sumsink + 1:]
+    }
+    [sumsinx = sumsinans]
+}
+END
+START
+[x = 1,1,0]
+max x high 1: low -1: points 60: {SUMSIN{x}}
+
+print{SUMSIN{x}}
+END

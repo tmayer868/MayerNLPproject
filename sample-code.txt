@@ -135,6 +135,10 @@ END
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 CODE EXAMPLE of finding extrema of user defined functions 
     In this case the function is sum(k=1:35) of sin(k*x^2 + k)
+
+In the function i started variable names with the name of the function
+to avoid conflicts since there is only one variable scope right now. 
+I should be able to fix that without too much trouble.
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 WOLFRAM code. 

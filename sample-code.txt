@@ -115,6 +115,7 @@ extrema atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))
 START
 [x = 1,1,0]
 max x high 10: low -10: points 40: {atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
+END
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 EXAMPLE of nested loops with if statement

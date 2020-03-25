@@ -7,37 +7,38 @@ NOTE the factorial must be defined before the exponential.
 START
 
 def FACT(factk){
-    [factx = 1:]
-    [factans = 1:]
+    factx = 1
+    factans = 1
     while(factx <= factk ){
-        [factans = factans*factx]
-        [factx = factx + 1:]
+        factans = factans*factx
+        factx = factx + 1
     }
-    [factk = factans]
+    factk = factans
 }
 
-print{FACT{5:}} 
+print(FACT(5:)) 
 
 END
 
 
 START
-print{FACT{6:}}
+print(FACT(6))
 END
 
 
 START
 def EXP(expx){
-    [expans = 1:][expi = 1:]
+    expans = 1
+    expi = 1
     while(expi<=100:){
-        [expans = expans + (expx^expi)/FACT{expi}]
-        [expi = expi + 1:]
+        expans = expans + (expx^expi)/FACT(expi)
+        expi = expi + 1
 
     }
-    [expx = expans]
+    expx = expans
 }
 
-print{EXP{1,1,0}}
+print(EXP(1,1,0))
 END
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''

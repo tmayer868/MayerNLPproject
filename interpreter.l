@@ -26,6 +26,10 @@
 
 [ \t]           ;
 
+"\n"            ; 
+"to"            {return TO;}
+"clear"         {return CLEAR;}
+"sum"           {return SUM;}
 "]"            { return EOL; }
 "["             { return BOL;}
 "END"         { return EOP; }//end of program
@@ -51,12 +55,13 @@
 "atan"          {return ATAN;}
 "^"             {return RAISE;}
 
+","             {return SEPERATOR;}
 
 [+-]?([0-9]*[.])?[0-9]+  { yylval.iVal = std::stof(yytext); return FLOAT; }
 [a-z]* { yylval.sVal = strdup(yytext); return VARNAME; }
 [A-Z]* { yylval.sVal = strdup(yytext); return FUNCNAME; }
 
-","             {return SEPERATOR;}
+
 
 "="             { return EQUALS; }
 "+"             { return ADD; }

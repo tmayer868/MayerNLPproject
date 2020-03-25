@@ -378,35 +378,54 @@ struct node{
             val -> der_2 = fpp;
         }
         else if (node_type == "raise"){
-            double g = (*arg1).val -> value;
-            double gp = (*arg1).val -> der_1;
-            double gpp = (*arg1).val -> der_2;
+            if(arg2-> val -> der_1 == 0 && arg2-> val -> der_2 == 0 ){
+                double g = (*arg1).val -> value;
+                double gp = (*arg1).val -> der_1;
+                double gpp = (*arg1).val -> der_2;
 
-            double h = (*arg2).val -> value;
+                double h = (*arg2).val -> value;
 
-            double f = pow(g,h);
-            double fp;
-            double fpp;
-            if(h==0){
-                fp = 0;
-                fpp = 0;
+                double f = pow(g,h);
+                double fp;
+                double fpp;
+                if(h==0){
+                    fp = 0;
+                    fpp = 0;
+                }
+                else if(h==1){
+                    fp = gp;
+                    fpp = gpp;
+                }
+                else if(h==2){
+                    fp = 2*g*gp;
+                    fpp = 2*(gp*gp + g*gpp);
+                } 
+                else{
+                    fp = h*pow(g,h-1)*gp;
+                    fpp = h*((h-1)*pow(g,h-2)*gp + pow(g,h-1)*gpp);
+                }
+                val = new Dual;
+                val -> value = f;
+                val -> der_1 = fp;
+                val -> der_2 = fpp;
             }
-            else if(h==1){
-                fp = gp;
-                fpp = gpp;
-            }
-            else if(h==2){
-                fp = 2*g*gp;
-                fpp = 2*(gp*gp + g*gpp);
-            } 
             else{
-                fp = h*pow(g,h-1)*gp;
-                fpp = h*((h-1)*pow(g,h-2)*gp + pow(g,h-1)*gpp);
+                double g = (*arg1).val -> value;
+                double gp = (*arg1).val -> der_1;
+                double gpp = (*arg1).val -> der_2;
+
+                double h = (*arg2).val -> value;
+                double hp = (*arg2).val -> der_1;
+                double hpp = (*arg2).val -> der_2;
+                
+                double f = pow(g,h);
+                double fp = f*(h*gp/g + log(g)*hp);
+                double fpp = fp*fp/f + f*(g*(2*gp*hp + g*log(g)*hpp) + h*(g*gpp - gp*gp))/(g*g); 
+                val = new Dual;
+                val -> value = f;
+                val -> der_1 = fp;
+                val -> der_2 = fpp;
             }
-            val = new Dual;
-            val -> value = f;
-            val -> der_1 = fp;
-            val -> der_2 = fpp;
         }
         else if(node_type == "func_call"){
 
@@ -421,6 +440,33 @@ struct node{
             cout << "1st Derivative "<< val -> der_1 <<endl;
             cout << "2nd Derivative "<< val -> der_2 <<endl;
             cout <<" "<<endl;
+        }
+        else if (node_type == "sum"){
+            double lower = arg2 -> val -> value;
+            double upper = arg3 -> val -> value;
+            Dual *ans = new Dual;
+            Dual a;
+            Dual *orig = new Dual;
+            ans -> value = 0;
+            ans -> der_1 = 0;
+            ans -> der_2 = 0;
+            orig -> value = (*variables)[look_up_var] -> value;
+            orig -> der_1 = (*variables)[look_up_var] -> der_1;
+            orig -> der_2 = (*variables)[look_up_var] -> der_2;
+            while(lower<=upper){
+                (*variables)[look_up_var] -> value = lower;
+                arg1 -> forward();
+
+                a = Add(*ans,*(arg4->val));
+                ans = &a;
+                lower = lower + 1;
+
+            }
+            val = ans;
+            (*variables)[look_up_var] -> value = orig -> value;
+            (*variables)[look_up_var] -> der_1 = orig -> der_1;
+            (*variables)[look_up_var] -> der_2 = orig -> der_2;
+
         }
         else{
             //cout<<" "<<endl;

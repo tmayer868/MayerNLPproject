@@ -56,13 +56,13 @@ exp(sin(x^3 + x^2 - 1))'' at x = 4
 ''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 START
-[x = 4,1,0]
-print{exp{sin{x^3: + x^2: - 1:}}}
+x = 4,1,0
+print(exp(sin(x^3 + x^2 - 1)))
 END
 
 START
-[x = 1,1,0]
-max x {exp{sin{x^3: + x^2: - 1:}}}
+x = 1,1,0
+max x {exp(sin(x^3 + x^2 - 1))}
 END
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -71,8 +71,8 @@ extrema exp(sin(x^3 + x^2 - 1))
 ''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 START
-[x = 1,1,0]
-max x high 20: low -20: points 50: {exp{sin{x^3: + x^2: - 1:}}}
+x = 1,1,0
+max x high 20 low -20 points 50 {exp(sin(x^3 + x^2 - 1))}
 END
 
 
@@ -82,13 +82,13 @@ WOLFRAM ALPHA CODE
 atan(exp(sin(x^3 + x^2 - 1)))'' at x = 4
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
-[x = 4,1,0]
-print{atan{exp{sin{x^3: + x^2: - 1:}}}}
+x = 4,1,0
+print(atan(exp(sin(x^3 + x^2 - 1))))
 END
 
 START
-[x = 1,1,0]
-max x {atan{exp{sin{x^3: + x^2: - 1:}}}}
+x = 1,1,0
+max x {atan(exp(sin(x^3 + x^2 - 1)))}
 END
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 WOLFRAM ALPHA CODE 
@@ -96,8 +96,8 @@ extrema atan(exp(sin(x^3 + x^2 - 1))) at x = 4
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 START
-[x = 1,1,0]
-max x high 20: low -20: points 50: {atan{exp{sin{x^3: + x^2: - 1:}}}}
+x = 1,1,0
+max x high 20: low -20: points 50: {atan(exp(sin(x^3 + x^2 - 1)))}
 END
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -106,7 +106,7 @@ atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))'' at x = 4
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 4,1,0]
-print{atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
+print(atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4)))))))
 END
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 WOLFRAM ALPHA CODE 
@@ -114,24 +114,24 @@ extrema atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
 [x = 1,1,0]
-max x high 10: low -10: points 40: {atan{exp{sin{x^4: - x^3: + sin{x^2: + exp{sin{x^4:}}}}}}}
+max x high 10 low -10 points 40 {atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4))))))}
 END
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 EXAMPLE of nested loops with if statement
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 START
-[x = 1:]
-while(x<=20:){
-    if(x>10:){
-        [i = 1:]
-        print{x}
+x = 1
+while(x<=20){
+    if(x>10){
+        [i = 1]
+        print(x)
         while(i<x){
-            print{i*i}
-            [i = i + 1:]
+            print(i*i)
+            i = i + 1
         }
     }
-    [x = x + 1:]
+    x = x + 1
 }
 END
 
@@ -150,18 +150,59 @@ plot sum( from k = 1 to 35) of sin(k*x^2 + k) from -1 to 1
 
 START
 def SUMSIN(sumsinx){
-    [sumsink = 1:]
-    [sumsinans = 0:]
-    while(sumsink<=35:){
-        [sumsinans = sumsinans + sin{sumsink*(sumsinx^2:) + sumsink}]
-        [sumsink = sumsink + 1:]
+    sumsink = 1
+    sumsinans = 0
+    while(sumsink<=35){
+        sumsinans = sumsinans + sin(sumsink*(sumsinx^2) + sumsink)
+        sumsink = sumsink + 1
     }
-    [sumsinx = sumsinans]
+    sumsinx = sumsinans
 }
 END
 START
-[x = 1,1,0]
-max x high 1: low -1: points 60: {SUMSIN{x}}
+x = 1,1,0
+max x high 1 low -1 points 60 {SUMSIN(x)}
 
-print{SUMSIN{x}}
+print(SUMSIN(x))
+END
+
+
+
+
+START
+
+def F(xvar){
+       fnum = 0 
+       knum = 0
+        while(knum <= xvar){
+            fnum = fnum + knum
+            knum = knum + 1
+        }
+        xvar = fnum
+}
+END
+
+START print(F(100)) END
+
+
+START
+
+def FACT(factk){
+    factx = 1
+    factans = 1
+    while(factx <= factk ){
+        factans = factans*factx
+        factx = factx + 1
+    }
+    factk = factans
+}
+
+print{FACT{5}} 
+
+END
+
+
+START
+x = 1,1,0
+max x high 10 low -10 points 40 { atan(exp(sin(x^4 - x^3 + sin(x^2 + exp(sin(x^4)))))) }
 END
